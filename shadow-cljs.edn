@@ -1,0 +1,37 @@
+{:dependencies [[re-frame "0.10.3-alpha2"]
+                [day8.re-frame/trace "0.1.14"]
+                [binaryage/devtools "0.9.8"]
+                [cider/cider-nrepl "0.16.0"]
+                [secretary "1.2.3"]
+                [venantius/accountant "0.2.3"] ]
+
+ :source-paths ["dev"
+                "test/cljs"
+                "src/cljs"
+                "src/cljc"]
+
+ :nrepl {:port 8230}
+
+ :builds       {:browser
+                {:target           :browser
+                 :modules          {:base {:entries [demo.core]}}
+                 :output-dir       "public/js/compiled"
+                 :asset-path       "/js/compiled"
+                 :compiler-options {:closure-defines  {re-frame.trace.trace-enabled? true}}
+
+                 :devtools         {:http-root    "public"
+                                    :http-handler shadow.http.push-state/handle
+                                    :http-port    8280
+                                    :after-load   demo.core/mount-root
+                                    :preloads     [day8.re-frame.trace.preload devtools.preload]}}
+
+                :browser-test
+                {:target           :browser-test
+                 :test-dir         "out/browser-test"
+                 :compiler-options {:closure-defines  {re-frame.trace.trace-enabled? true}}
+                 :devtools         {:http-root    "out/browser-test"
+                                    :http-port    8290}}
+
+                :karma-test
+                {:target           :karma
+                 :output-to        "out/karma/test.js"}}}

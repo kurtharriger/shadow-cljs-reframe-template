@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "watch": "shadow-cljs watch browser",
+    "watch-test": "shadow-cljs watch browser-test",
+    "test": "shadow-cljs compile karma-test && karma start --single-run"
+  },
+  "devDependencies": {
+    "create-react-class": "^15.6.2",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cljs-test": "^0.1.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "rxjs": "^5.5.6",
+    "shadow-cljs": "^2.0.144"
+  }
+}
